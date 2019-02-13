@@ -15,8 +15,11 @@ import javax.persistence.Table;
 public class AuditEntity {
 
 	@Id
-	@Convert(converter = NopAttributeConverter.class)
 	private String id;
+
+	@Column(name = "simple_attribute")
+	@Convert(converter = NopAttributeConverter.class)
+	private String simpleAttribute;
 
 	@Column(name = "last_change")
 	private LocalDateTime lastChange;
@@ -58,6 +61,10 @@ public class AuditEntity {
 		return lastChange;
 	}
 
+	public String getSimpleAttribute() {
+		return simpleAttribute;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -68,5 +75,9 @@ public class AuditEntity {
 
 	public void setLastChange(final LocalDateTime lastChange) {
 		this.lastChange = lastChange;
+	}
+
+	public void setSimpleAttribute(final String simpleAttribute) {
+		this.simpleAttribute = simpleAttribute;
 	}
 }
